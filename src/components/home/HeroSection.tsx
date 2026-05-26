@@ -1,6 +1,37 @@
 import Link from 'next/link'
+import { createClient } from '@/lib/supabase/server'
+import { HeroCarousel } from './HeroCarousel'
+import type { HeroSlide } from '@/types'
 
-export function HeroSection() {
+type SlidePreview = Pick<HeroSlide, 'id' | 'image_url' | 'judul' | 'link_tujuan'>
+
+const FALLBACK_SLIDES: SlidePreview[] = [
+  {
+    id: 'fallback',
+    image_url: '/produk_unggulan.jpeg',
+    judul: null,
+    link_tujuan: '/katalog',
+  },
+]
+
+async function fetchSlides(): Promise<SlidePreview[]> {
+  try {
+    const supabase = await createClient()
+    const { data, error } = await supabase
+      .from('hero_slides')
+      .select('id, image_url, judul, link_tujuan')
+      .eq('is_active', true)
+      .order('urutan', { ascending: true })
+    if (error || !data || data.length === 0) return FALLBACK_SLIDES
+    return data
+  } catch {
+    return FALLBACK_SLIDES
+  }
+}
+
+export async function HeroSection() {
+  const slides = await fetchSlides()
+
   return (
     <section className="bg-tosca-light">
       <div className="max-w-6xl mx-auto px-5 py-16 grid md:grid-cols-2 gap-10 items-center">
@@ -38,12 +69,7 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* Ganti dengan next/image dan foto produk unggulan Anda */}
-        <div className="aspect-[4/3] bg-white/60 rounded-2xl flex items-center justify-center text-gray-400 border border-tosca/20">
-          <span className="text-sm text-center px-6">
-            [ Taruh foto produk unggulan di sini ]
-          </span>
-        </div>
+        <HeroCarousel slides={slides} />
       </div>
     </section>
   )

@@ -59,6 +59,12 @@ export default async function AdminDashboardPage() {
           >
             Tambah Produk Baru
           </Link>
+          <Link
+            href="/admin/banner"
+            className="border border-gray-200 px-4 py-2 rounded-lg text-sm hover:border-tosca transition"
+          >
+            Kelola Banner Hero
+          </Link>
           <a
             href="/"
             target="_blank"

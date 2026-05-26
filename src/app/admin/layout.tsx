@@ -46,6 +46,12 @@ export default async function AdminLayout({
           >
             Produk
           </a>
+          <a
+            href="/admin/banner"
+            className="py-3 border-b-2 border-transparent hover:border-tosca hover:text-tosca transition"
+          >
+            Banner Hero
+          </a>
         </div>
       </nav>
 

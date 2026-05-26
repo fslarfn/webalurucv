@@ -17,6 +17,16 @@ export interface Product {
   updated_at: string
 }
 
+export interface HeroSlide {
+  id: string
+  image_url: string
+  judul: string | null
+  link_tujuan: string
+  urutan: number
+  is_active: boolean
+  created_at: string
+}
+
 export interface QuoteFormData {
   nama: string
   hp: string

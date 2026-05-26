@@ -98,9 +98,15 @@ export default async function DetailProdukPage({ params }: Props) {
           )}
 
           {product.description && (
-            <p className="text-gray-600 mb-6 leading-relaxed">
-              {product.description}
-            </p>
+            <div className="text-gray-600 mb-6 leading-relaxed space-y-3">
+              {product.description
+                .split(/\n\s*\n/)
+                .map((para: string) => para.trim())
+                .filter(Boolean)
+                .map((para: string, i: number) => (
+                  <p key={i}>{para}</p>
+                ))}
+            </div>
           )}
 
           {specs && Object.keys(specs).length > 0 && (
