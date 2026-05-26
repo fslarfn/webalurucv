@@ -45,7 +45,7 @@ export const DELIVERY_AREAS = [
 export const WORKSHOP_ADDRESS =
   'Jl. Mayor Oking No.71 RT 006/001 Margahayu, Bekasi Timur, Kota Bekasi, Jawa Barat 17113'
 export const OPERATING_HOURS = {
-  weekdays: 'Senin – Sabtu: 08.00 – 17.00 WIB',
+  weekdays: 'Senin – Sabtu: 08.00 – 16.00 WIB',
   weekend: 'Minggu: Tutup',
 }
 
