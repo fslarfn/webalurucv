@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alucurv — Jendela Aluminium Bulat & Lengkung Custom | Kirim Cepat Jabodetabek</title>
+  <meta name="description" content="Alucurv memproduksi jendela aluminium custom berbentuk bulat dan lengkung. Khusus Jabodetabek, pengiriman cepat dengan armada sendiri. Konsultasi via WhatsApp." />
+
+  <meta property="og:title" content="Alucurv — Jendela Aluminium Bulat & Lengkung | Kirim Cepat Jabodetabek" />
+  <meta property="og:description" content="Jendela aluminium custom berbentuk bulat dan lengkung. Khusus Jabodetabek, pengiriman cepat." />
+  <meta property="og:type" content="website" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            // Palet diambil dari logo Alucurv
+            tosca: {
+              DEFAULT: '#1eb8b0', // tosca utama
+              dark:    '#159089', // tosca gelap (hover)
+              light:   '#e5f6f5', // tosca sangat muda (background)
+            },
+            ink: '#1f2d2c', // teks gelap kehijauan
+          },
+          fontFamily: {
+            sans: ['system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="font-sans text-ink bg-white antialiased">
+
+  <!-- ============ TOP BAR ============ -->
+  <div class="bg-ink text-white text-xs text-center py-2 px-4">
+    Khusus area Jabodetabek &middot; Pengiriman cepat dengan armada sendiri &middot; Gratis survei ukuran
+  </div>
+
+  <!-- ============ HEADER / NAVBAR ============ -->
+  <header class="sticky top-0 z-40 bg-white border-b border-gray-100">
+    <nav class="max-w-6xl mx-auto px-5 h-20 flex items-center justify-between gap-6">
+      <a href="#" class="flex items-center gap-2 shrink-0">
+        <span class="w-9 h-9 rounded-lg bg-tosca flex items-center justify-center text-white font-bold">A</span>
+        <span class="text-2xl font-bold tracking-tight text-tosca">Alucurv</span>
+      </a>
+
+      <div class="hidden md:flex flex-1 max-w-md">
+        <input type="text" placeholder="Cari jendela bulat, lengkung..."
+               class="w-full border border-gray-200 rounded-l-full px-4 py-2 text-sm focus:outline-none focus:border-tosca" />
+        <button class="bg-tosca text-white px-5 rounded-r-full text-sm font-medium hover:bg-tosca-dark transition">
+          Cari
+        </button>
+      </div>
+
+      <a href="#quote"
+         class="bg-tosca text-white text-sm font-medium px-5 py-2.5 rounded-full hover:bg-tosca-dark transition shrink-0">
+        Minta Penawaran
+      </a>
+    </nav>
+
+    <div class="border-t border-gray-100">
+      <ul class="max-w-6xl mx-auto px-5 flex items-center gap-7 h-12 text-sm font-medium overflow-x-auto no-scrollbar">
+        <li><a href="#produk" class="hover:text-tosca whitespace-nowrap transition">Semua Produk</a></li>
+        <li><a href="#produk" class="hover:text-tosca whitespace-nowrap transition">Jendela Bulat</a></li>
+        <li><a href="#produk" class="hover:text-tosca whitespace-nowrap transition">Jendela Lengkung</a></li>
+        <li><a href="#produk" class="hover:text-tosca whitespace-nowrap transition">Setengah Lingkaran</a></li>
+        <li><a href="#pengiriman" class="hover:text-tosca whitespace-nowrap transition">Area Pengiriman</a></li>
+        <li><a href="#cara-pesan" class="hover:text-tosca whitespace-nowrap transition">Cara Pesan</a></li>
+        <li><a href="#tentang" class="hover:text-tosca whitespace-nowrap transition">Tentang Kami</a></li>
+        <li><a href="#kontak" class="hover:text-tosca whitespace-nowrap transition">Kontak</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ============ HERO BANNER ============ -->
+  <section class="bg-tosca-light">
+    <div class="max-w-6xl mx-auto px-5 py-16 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <p class="text-tosca-dark font-semibold text-sm uppercase tracking-widest mb-3">
+          Spesialis Jendela Aluminium Custom
+        </p>
+        <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-5 text-ink">
+          Jendela Bulat & Lengkung — Kirim Cepat ke Seluruh Jabodetabek
+        </h1>
+        <p class="text-gray-600 text-lg mb-6">
+          Alucurv memproduksi jendela aluminium berbentuk unik dengan kualitas
+          premium. Dikirim cepat memakai armada sendiri — bukan ekspedisi pihak
+          ketiga, jadi barang besar & rapuh lebih aman sampai.
+        </p>
+        <!-- Poin cepat -->
+        <ul class="text-sm text-gray-700 space-y-1.5 mb-8">
+          <li>&#10003; Khusus area Jabodetabek</li>
+          <li>&#10003; Pengiriman cepat dengan armada sendiri</li>
+          <li>&#10003; Gratis survei & konsultasi ukuran</li>
+        </ul>
+        <div class="flex flex-wrap gap-3">
+          <a href="#quote"
+             class="bg-tosca text-white font-medium px-6 py-3 rounded-full hover:bg-tosca-dark transition">
+            Konsultasi Gratis
+          </a>
+          <a href="#produk"
+             class="bg-white border border-gray-300 font-medium px-6 py-3 rounded-full hover:border-tosca transition">
+            Lihat Katalog
+          </a>
+        </div>
+      </div>
+      <div class="aspect-[4/3] bg-white/60 rounded-2xl flex items-center justify-center text-gray-400 border border-tosca/20">
+        [ Foto Produk Unggulan ]
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STRIP BENEFIT ============ -->
+  <section class="border-b border-gray-100">
+    <div class="max-w-6xl mx-auto px-5 grid grid-cols-2 md:grid-cols-4 gap-4 py-6 text-center">
+      <div>
+        <p class="font-semibold text-sm">Kirim Cepat Jabodetabek</p>
+        <p class="text-gray-500 text-xs">Armada pengiriman sendiri</p>
+      </div>
+      <div>
+        <p class="font-semibold text-sm">Ukuran Custom</p>
+        <p class="text-gray-500 text-xs">Sesuai pesanan Anda</p>
+      </div>
+      <div>
+        <p class="font-semibold text-sm">Aluminium Premium</p>
+        <p class="text-gray-500 text-xs">Anti karat & tahan cuaca</p>
+      </div>
+      <div>
+        <p class="font-semibold text-sm">Garansi Pengerjaan</p>
+        <p class="text-gray-500 text-xs">Hasil rapi terjamin</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ KATEGORI BENTUK ============ -->
+  <section class="max-w-6xl mx-auto px-5 py-14">
+    <h2 class="text-2xl font-bold mb-8 text-center">Belanja Berdasarkan Bentuk</h2>
+    <div class="flex justify-center gap-8 flex-wrap">
+      <a href="#produk" class="text-center group">
+        <div class="w-24 h-24 rounded-full bg-tosca-light group-hover:bg-tosca/20 flex items-center justify-center text-gray-400 mb-2 transition">
+          [ Ikon ]
+        </div>
+        <p class="text-sm font-medium">Jendela Bulat</p>
+      </a>
+      <a href="#produk" class="text-center group">
+        <div class="w-24 h-24 rounded-full bg-tosca-light group-hover:bg-tosca/20 flex items-center justify-center text-gray-400 mb-2 transition">
+          [ Ikon ]
+        </div>
+        <p class="text-sm font-medium">Jendela Lengkung</p>
+      </a>
+      <a href="#produk" class="text-center group">
+        <div class="w-24 h-24 rounded-full bg-tosca-light group-hover:bg-tosca/20 flex items-center justify-center text-gray-400 mb-2 transition">
+          [ Ikon ]
+        </div>
+        <p class="text-sm font-medium">Setengah Lingkaran</p>
+      </a>
+      <a href="#quote" class="text-center group">
+        <div class="w-24 h-24 rounded-full bg-tosca-light group-hover:bg-tosca/20 flex items-center justify-center text-gray-400 mb-2 transition">
+          [ Ikon ]
+        </div>
+        <p class="text-sm font-medium">Custom Desain</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ KATALOG PRODUK ============ -->
+  <section id="produk" class="bg-gray-50 py-16">
+    <div class="max-w-6xl mx-auto px-5">
+      <div class="flex items-end justify-between mb-8">
+        <div>
+          <h2 class="text-2xl font-bold">Produk Terlaris</h2>
+          <p class="text-gray-500 text-sm">Pilihan favorit pelanggan Alucurv</p>
+        </div>
+        <a href="#" class="text-tosca text-sm font-medium hover:underline">Lihat Semua</a>
+      </div>
+
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-5">
+        <!-- Kartu Produk — duplikat blok ini untuk produk lain -->
+        <article class="bg-white rounded-xl overflow-hidden border border-gray-100 hover:shadow-md transition">
+          <div class="aspect-square bg-gray-100 flex items-center justify-center text-gray-400 text-sm">
+            [ Foto ]
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold text-sm leading-snug">Jendela Bulat Klasik</h3>
+            <p class="text-gray-400 text-xs mt-0.5 mb-2">Aluminium &middot; Kaca bening</p>
+            <p class="text-yellow-500 text-xs mb-2">&#9733;&#9733;&#9733;&#9733;&#9733; <span class="text-gray-400">(terjual 100+)</span></p>
+            <p class="text-tosca font-bold">Rp -------</p>
+            <a href="#quote" class="mt-3 block text-center bg-tosca text-white text-xs py-2 rounded-full hover:bg-tosca-dark transition">
+              Minta Harga
+            </a>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-xl overflow-hidden border border-gray-100 hover:shadow-md transition">
+          <div class="aspect-square bg-gray-100 flex items-center justify-center text-gray-400 text-sm">
+            [ Foto ]
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold text-sm leading-snug">Jendela Lengkung (Arch)</h3>
+            <p class="text-gray-400 text-xs mt-0.5 mb-2">Aluminium &middot; Kaca bening</p>
+            <p class="text-yellow-500 text-xs mb-2">&#9733;&#9733;&#9733;&#9733;&#9733; <span class="text-gray-400">(terjual 80+)</span></p>
+            <p class="text-tosca font-bold">Rp -------</p>
+            <a href="#quote" class="mt-3 block text-center bg-tosca text-white text-xs py-2 rounded-full hover:bg-tosca-dark transition">
+              Minta Harga
+            </a>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-xl overflow-hidden border border-gray-100 hover:shadow-md transition">
+          <div class="aspect-square bg-gray-100 flex items-center justify-center text-gray-400 text-sm">
+            [ Foto ]
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold text-sm leading-snug">Jendela Setengah Lingkaran</h3>
+            <p class="text-gray-400 text-xs mt-0.5 mb-2">Aluminium &middot; Kaca bening</p>
+            <p class="text-yellow-500 text-xs mb-2">&#9733;&#9733;&#9733;&#9733;&#9734; <span class="text-gray-400">(terjual 50+)</span></p>
+            <p class="text-tosca font-bold">Rp -------</p>
+            <a href="#quote" class="mt-3 block text-center bg-tosca text-white text-xs py-2 rounded-full hover:bg-tosca-dark transition">
+              Minta Harga
+            </a>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-xl overflow-hidden border border-gray-100 hover:shadow-md transition">
+          <div class="aspect-square bg-gray-100 flex items-center justify-center text-gray-400 text-sm">
+            [ Foto ]
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold text-sm leading-snug">Jendela Oval Custom</h3>
+            <p class="text-gray-400 text-xs mt-0.5 mb-2">Aluminium &middot; Kaca bening</p>
+            <p class="text-yellow-500 text-xs mb-2">&#9733;&#9733;&#9733;&#9733;&#9733; <span class="text-gray-400">(terjual 30+)</span></p>
+            <p class="text-tosca font-bold">Rp -------</p>
+            <a href="#quote" class="mt-3 block text-center bg-tosca text-white text-xs py-2 rounded-full hover:bg-tosca-dark transition">
+              Minta Harga
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AREA PENGIRIMAN ============ -->
+  <section id="pengiriman" class="max-w-6xl mx-auto px-5 py-16">
+    <div class="text-center mb-10">
+      <h2 class="text-2xl font-bold mb-2">Area & Estimasi Pengiriman</h2>
+      <p class="text-gray-500 text-sm max-w-xl mx-auto">
+        Kami melayani seluruh Jabodetabek dengan armada pengiriman sendiri.
+        Ongkos kirim dihitung saat konsultasi sesuai jumlah & lokasi pemasangan.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+      <div class="border border-gray-100 rounded-xl p-5 text-center hover:border-tosca transition">
+        <p class="font-semibold">Jakarta</p>
+        <p class="text-gray-500 text-xs mt-1">Estimasi 1–2 hari</p>
+      </div>
+      <div class="border border-gray-100 rounded-xl p-5 text-center hover:border-tosca transition">
+        <p class="font-semibold">Bogor</p>
+        <p class="text-gray-500 text-xs mt-1">Estimasi 1–3 hari</p>
+      </div>
+      <div class="border border-gray-100 rounded-xl p-5 text-center hover:border-tosca transition">
+        <p class="font-semibold">Depok</p>
+        <p class="text-gray-500 text-xs mt-1">Estimasi 1–2 hari</p>
+      </div>
+      <div class="border border-gray-100 rounded-xl p-5 text-center hover:border-tosca transition">
+        <p class="font-semibold">Tangerang</p>
+        <p class="text-gray-500 text-xs mt-1">Estimasi 1–3 hari</p>
+      </div>
+      <div class="border border-gray-100 rounded-xl p-5 text-center hover:border-tosca transition">
+        <p class="font-semibold">Bekasi</p>
+        <p class="text-gray-500 text-xs mt-1">Estimasi 1–3 hari</p>
+      </div>
+    </div>
+    <p class="text-gray-400 text-xs text-center mt-4">
+      *Estimasi dapat berubah tergantung antrean produksi & jadwal pemasangan.
+      Di luar Jabodetabek? Hubungi kami untuk dicek ketersediaannya.
+    </p>
+  </section>
+
+  <!-- ============ BANNER PROMO ============ -->
+  <section class="max-w-6xl mx-auto px-5 pb-14">
+    <div class="bg-tosca rounded-2xl px-8 py-12 text-center text-white">
+      <h2 class="text-2xl md:text-3xl font-bold mb-3">Punya Desain Jendela Sendiri?</h2>
+      <p class="text-white/90 mb-6 max-w-xl mx-auto">
+        Kirim sketsa atau ukuran Anda, tim kami akan membantu mewujudkannya.
+      </p>
+      <a href="#quote" class="inline-block bg-white text-tosca font-semibold px-7 py-3 rounded-full hover:bg-tosca-light transition">
+        Konsultasi Sekarang
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ CARA PEMESANAN ============ -->
+  <section id="cara-pesan" class="bg-gray-50 py-16">
+    <div class="max-w-6xl mx-auto px-5">
+      <h2 class="text-2xl font-bold mb-3 text-center">Cara Pemesanan</h2>
+      <p class="text-gray-500 text-sm text-center mb-10 max-w-xl mx-auto">
+        Pembayaran dengan sistem DP di awal lalu pelunasan sebelum pengiriman.
+      </p>
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+        <div class="text-center">
+          <div class="w-11 h-11 mx-auto bg-tosca text-white rounded-full flex items-center justify-center font-bold mb-3">1</div>
+          <h3 class="font-semibold mb-1 text-sm">Konsultasi</h3>
+          <p class="text-gray-500 text-xs">Hubungi via WhatsApp, kami bantu tentukan kebutuhan & ongkir.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-11 h-11 mx-auto bg-tosca text-white rounded-full flex items-center justify-center font-bold mb-3">2</div>
+          <h3 class="font-semibold mb-1 text-sm">Survei & Quote</h3>
+          <p class="text-gray-500 text-xs">Survei ukuran (gratis), lalu kami beri penawaran final.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-11 h-11 mx-auto bg-tosca text-white rounded-full flex items-center justify-center font-bold mb-3">3</div>
+          <h3 class="font-semibold mb-1 text-sm">DP & Produksi</h3>
+          <p class="text-gray-500 text-xs">Bayar DP via transfer, jendela mulai diproduksi.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-11 h-11 mx-auto bg-tosca text-white rounded-full flex items-center justify-center font-bold mb-3">4</div>
+          <h3 class="font-semibold mb-1 text-sm">Pelunasan</h3>
+          <p class="text-gray-500 text-xs">Lunasi sisa pembayaran sebelum barang dikirim.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-11 h-11 mx-auto bg-tosca text-white rounded-full flex items-center justify-center font-bold mb-3">5</div>
+          <h3 class="font-semibold mb-1 text-sm">Kirim & Pasang</h3>
+          <p class="text-gray-500 text-xs">Dikirim cepat dengan armada sendiri, siap dipasang.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONI ============ -->
+  <section class="max-w-6xl mx-auto px-5 py-16">
+    <h2 class="text-2xl font-bold mb-2 text-center">Kata Pelanggan Kami</h2>
+    <p class="text-gray-500 text-sm text-center mb-10">Pengalaman nyata pelanggan Alucurv di Jabodetabek</p>
+    <div class="grid md:grid-cols-3 gap-6">
+      <!-- Ganti dengan testimoni asli -->
+      <div class="border border-gray-100 rounded-xl p-6">
+        <p class="text-yellow-500 text-sm mb-2">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+        <p class="text-gray-600 text-sm mb-4">"[ Testimoni pelanggan — ganti dengan ulasan asli dari pembeli Anda. ]"</p>
+        <p class="font-semibold text-sm">Nama Pelanggan</p>
+        <p class="text-gray-400 text-xs">Jakarta Selatan</p>
+      </div>
+      <div class="border border-gray-100 rounded-xl p-6">
+        <p class="text-yellow-500 text-sm mb-2">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+        <p class="text-gray-600 text-sm mb-4">"[ Testimoni pelanggan — ganti dengan ulasan asli dari pembeli Anda. ]"</p>
+        <p class="font-semibold text-sm">Nama Pelanggan</p>
+        <p class="text-gray-400 text-xs">Bekasi</p>
+      </div>
+      <div class="border border-gray-100 rounded-xl p-6">
+        <p class="text-yellow-500 text-sm mb-2">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+        <p class="text-gray-600 text-sm mb-4">"[ Testimoni pelanggan — ganti dengan ulasan asli dari pembeli Anda. ]"</p>
+        <p class="font-semibold text-sm">Nama Pelanggan</p>
+        <p class="text-gray-400 text-xs">Tangerang</p>
+      </div>
+    </div>
+    <p class="text-center text-gray-400 text-xs mt-6">
+      Masih ragu? Anda juga bisa melihat ulasan kami di
+      <a href="#" class="text-tosca hover:underline">toko Shopee Alucurv</a>.
+    </p>
+  </section>
+
+  <!-- ============ FORM REQUEST QUOTE ============ -->
+  <section id="quote" class="bg-tosca-light py-16">
+    <div class="max-w-2xl mx-auto px-5">
+      <h2 class="text-2xl font-bold mb-2 text-center">Minta Penawaran</h2>
+      <p class="text-gray-600 text-center mb-8 text-sm">
+        Isi form ini — pesanan langsung dikirim ke WhatsApp kami beserta
+        estimasi ongkir untuk area Anda.
+      </p>
+
+      <form id="quoteForm" class="space-y-4 bg-white p-6 rounded-2xl border border-gray-100">
+        <div>
+          <label class="block text-sm font-medium mb-1">Nama</label>
+          <input type="text" id="nama" required
+                 class="w-full border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:border-tosca" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1">No. WhatsApp</label>
+          <input type="tel" id="hp" required
+                 class="w-full border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:border-tosca" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1">Area Pengiriman</label>
+          <select id="area"
+                  class="w-full border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:border-tosca">
+            <option>Jakarta Pusat</option>
+            <option>Jakarta Utara</option>
+            <option>Jakarta Barat</option>
+            <option>Jakarta Selatan</option>
+            <option>Jakarta Timur</option>
+            <option>Bogor</option>
+            <option>Depok</option>
+            <option>Tangerang</option>
+            <option>Tangerang Selatan</option>
+            <option>Bekasi</option>
+            <option>Di luar Jabodetabek</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1">Bentuk Jendela</label>
+          <select id="bentuk"
+                  class="w-full border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:border-tosca">
+            <option>Jendela Bulat</option>
+            <option>Jendela Lengkung (Arch)</option>
+            <option>Jendela Setengah Lingkaran</option>
+            <option>Jendela Oval</option>
+            <option>Lainnya / Custom</option>
+          </select>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium mb-1">Lebar / Diameter (cm)</label>
+            <input type="number" id="lebar"
+                   class="w-full border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:border-tosca" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Tinggi (cm)</label>
+            <input type="number" id="tinggi"
+                   class="w-full border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:border-tosca" />
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1">Jumlah</label>
+          <input type="number" id="jumlah" value="1" min="1"
+                 class="w-full border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:border-tosca" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1">Catatan Tambahan</label>
+          <textarea id="catatan" rows="3"
+                    class="w-full border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:border-tosca"></textarea>
+        </div>
+        <button type="submit"
+                class="w-full bg-tosca text-white font-medium py-3 rounded-full hover:bg-tosca-dark transition">
+          Kirim ke WhatsApp
+        </button>
+        <p class="text-gray-400 text-xs text-center">
+          Pembayaran: DP via transfer di awal, pelunasan sebelum pengiriman.
+        </p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ TENTANG ============ -->
+  <section id="tentang" class="py-16">
+    <div class="max-w-3xl mx-auto px-5 text-center">
+      <h2 class="text-2xl font-bold mb-4">Tentang Alucurv</h2>
+      <p class="text-gray-600">
+        Alucurv adalah workshop spesialis jendela aluminium berbentuk bulat dan
+        lengkung yang melayani area Jabodetabek. Kami percaya setiap rumah punya
+        karakter, dan jendela dengan bentuk unik dapat menjadi pembeda. Dengan
+        pengerjaan presisi, bahan berkualitas, dan pengiriman memakai armada
+        sendiri, kami memastikan pesanan Anda sampai cepat dan aman.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER / KONTAK ============ -->
+  <footer id="kontak" class="bg-ink text-gray-300 py-14">
+    <div class="max-w-6xl mx-auto px-5 grid sm:grid-cols-3 gap-8 text-sm">
+      <div>
+        <div class="flex items-center gap-2 mb-3">
+          <span class="w-8 h-8 rounded-lg bg-tosca flex items-center justify-center text-white font-bold">A</span>
+          <span class="text-xl font-bold text-white">Alucurv</span>
+        </div>
+        <p>Jendela aluminium bulat & lengkung custom. Melayani area Jabodetabek.</p>
+      </div>
+      <div>
+        <p class="text-white font-semibold mb-3">Kontak</p>
+        <p>WhatsApp: 08xx-xxxx-xxxx</p>
+        <p>Email: halo@alucurv.com</p>
+        <p>Workshop: [ Alamat Anda ]</p>
+      </div>
+      <div>
+        <p class="text-white font-semibold mb-3">Jam Operasional</p>
+        <p>Senin – Sabtu: 08.00 – 17.00</p>
+        <p>Minggu: Tutup</p>
+      </div>
+    </div>
+    <p class="text-center text-gray-500 text-xs mt-10">
+      &copy; 2026 Alucurv. Semua hak dilindungi.
+    </p>
+  </footer>
+
+  <!-- ============ TOMBOL WHATSAPP MENGAMBANG ============ -->
+  <a href="https://wa.me/62800000000"
+     id="floatingWa"
+     class="fixed bottom-5 right-5 z-50 bg-green-500 text-white px-5 py-3 rounded-full shadow-lg font-medium hover:bg-green-600 transition">
+    Chat WhatsApp
+  </a>
+
+  <script>
+    // GANTI dengan nomor WhatsApp toko (format internasional tanpa tanda +)
+    const NOMOR_WA = '62800000000';
+
+    document.getElementById('quoteForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const nama    = document.getElementById('nama').value;
+      const hp      = document.getElementById('hp').value;
+      const area    = document.getElementById('area').value;
+      const bentuk  = document.getElementById('bentuk').value;
+      const lebar   = document.getElementById('lebar').value || '-';
+      const tinggi  = document.getElementById('tinggi').value || '-';
+      const jumlah  = document.getElementById('jumlah').value;
+      const catatan = document.getElementById('catatan').value || '-';
+
+      const pesan =
+        `Halo Alucurv, saya ingin minta penawaran:%0A%0A` +
+        `Nama: ${nama}%0A` +
+        `No. HP: ${hp}%0A` +
+        `Area: ${area}%0A` +
+        `Bentuk: ${bentuk}%0A` +
+        `Ukuran: ${lebar} x ${tinggi} cm%0A` +
+        `Jumlah: ${jumlah}%0A` +
+        `Catatan: ${catatan}`;
+
+      window.open(`https://wa.me/${NOMOR_WA}?text=${pesan}`, '_blank');
+    });
+  </script>
+
+</body>
+</html>
