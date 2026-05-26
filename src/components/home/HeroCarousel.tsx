@@ -7,8 +7,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import type { HeroSlide } from '@/types'
 
-const FALLBACK_SRC = '/produk_unggulan.jpeg'
-
 interface Props {
   slides: Pick<HeroSlide, 'id' | 'image_url' | 'judul' | 'link_tujuan'>[]
 }
@@ -19,7 +17,7 @@ export function HeroCarousel({ slides }: Props) {
     [Autoplay({ delay: 5000, stopOnInteraction: false, stopOnMouseEnter: true })],
   )
   const [selectedIndex, setSelectedIndex] = useState(0)
-  const [imgErrors, setImgErrors] = useState<Record<number, boolean>>({})
+  const [imgErrors, setImgErrors] = useState<Set<number>>(new Set())
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return
@@ -36,11 +34,17 @@ export function HeroCarousel({ slides }: Props) {
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi])
   const scrollTo  = useCallback((i: number) => emblaApi?.scrollTo(i), [emblaApi])
 
+  if (slides.length === 0) {
+    return (
+      <div className="aspect-video rounded-2xl bg-tosca-light border border-tosca/20" />
+    )
+  }
+
   const multiSlide = slides.length > 1
 
   return (
     <div
-      className="relative aspect-[4/3] max-h-72 md:max-h-none rounded-2xl overflow-hidden shadow-md"
+      className="relative aspect-video rounded-2xl overflow-hidden shadow-md bg-tosca-light"
       role="region"
       aria-label="Galeri produk unggulan"
       aria-roledescription="carousel"
@@ -56,17 +60,21 @@ export function HeroCarousel({ slides }: Props) {
               aria-roledescription="slide"
               aria-label={slide.judul ?? `Slide ${i + 1}`}
             >
-              <Image
-                src={imgErrors[i] ? FALLBACK_SRC : slide.image_url}
-                alt={slide.judul ?? 'Produk unggulan Alucurv'}
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover"
-                priority={i === 0}
-                onError={() =>
-                  setImgErrors((prev) => ({ ...prev, [i]: true }))
-                }
-              />
+              {imgErrors.has(i) ? (
+                <div className="w-full h-full bg-tosca-light" />
+              ) : (
+                <Image
+                  src={slide.image_url}
+                  alt={slide.judul ?? 'Produk unggulan Alucurv'}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-contain"
+                  priority={i === 0}
+                  onError={() =>
+                    setImgErrors((prev) => new Set(prev).add(i))
+                  }
+                />
+              )}
             </Link>
           ))}
         </div>

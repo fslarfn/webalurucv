@@ -123,7 +123,9 @@ export function SlideForm({ slide }: Props) {
           />
         </label>
         <p className="text-gray-400 text-xs mt-1">
-          Format: JPG, PNG, WebP. Rasio 4:3 direkomendasikan.
+          Ukuran yang disarankan: <strong>1600 × 900 piksel (rasio 16:9)</strong>.
+          Letakkan objek penting di bagian tengah foto.
+          Format: JPG, PNG, WebP.
         </p>
       </div>
 

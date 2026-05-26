@@ -5,15 +5,6 @@ import type { HeroSlide } from '@/types'
 
 type SlidePreview = Pick<HeroSlide, 'id' | 'image_url' | 'judul' | 'link_tujuan'>
 
-const FALLBACK_SLIDES: SlidePreview[] = [
-  {
-    id: 'fallback',
-    image_url: '/produk_unggulan.jpeg',
-    judul: null,
-    link_tujuan: '/katalog',
-  },
-]
-
 async function fetchSlides(): Promise<SlidePreview[]> {
   try {
     const supabase = await createClient()
@@ -22,10 +13,10 @@ async function fetchSlides(): Promise<SlidePreview[]> {
       .select('id, image_url, judul, link_tujuan')
       .eq('is_active', true)
       .order('urutan', { ascending: true })
-    if (error || !data || data.length === 0) return FALLBACK_SLIDES
+    if (error || !data) return []
     return data
   } catch {
-    return FALLBACK_SLIDES
+    return []
   }
 }
 
