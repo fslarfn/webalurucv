@@ -3,7 +3,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? 'https://alucurv.vercel.app'
+    process.env.NEXT_PUBLIC_SITE_URL ?? 'https://alucurv.com'
   ),
   title: {
     default:

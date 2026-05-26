@@ -22,7 +22,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!data) return {}
 
-  const ogImage = data.images?.[0] ?? '/og-image.jpg'
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://alucurv.com'
+  // Supabase Storage URL sudah absolut; fallback pakai URL absolut agar
+  // tidak bergantung metadataBase saat domain belum di-set di env var.
+  const ogImage = data.images?.[0] ?? `${siteUrl}/og-image.jpg`
   const description =
     data.description ??
     `Jendela aluminium ${data.name} dari Alucurv. Kirim cepat ke Jabodetabek.`
@@ -35,6 +38,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       images: [{ url: ogImage, width: 1200, height: 630, alt: data.name }],
       type: 'website',
+      locale: 'id_ID',
+      siteName: 'Alucurv',
     },
   }
 }
@@ -60,7 +65,13 @@ export default async function DetailProdukPage({ params }: Props) {
     produk: product.name,
   })
 
-  const specs = product.specifications as Record<string, string> | null
+  const rawSpecs = product.specifications as Record<string, string> | null
+  // Filter entri dengan nilai kosong (terjadi bila input diakhiri ":" tanpa nilai)
+  const specs = rawSpecs
+    ? Object.fromEntries(
+        Object.entries(rawSpecs).filter(([, v]) => v && v.trim() !== '')
+      )
+    : null
 
   return (
     <div className="max-w-5xl mx-auto px-5 py-12">

@@ -74,11 +74,10 @@ export function ProductForm({ product }: Props) {
     const result: Record<string, string> = {}
     raw.split('\n').forEach((line) => {
       const colon = line.indexOf(':')
-      if (colon > -1) {
-        const key = line.slice(0, colon).trim()
-        const val = line.slice(colon + 1).trim()
-        if (key) result[key] = val
-      }
+      if (colon === -1) return               // baris tanpa ":" diabaikan
+      const key = line.slice(0, colon).trim()
+      const val = line.slice(colon + 1).trim()
+      if (key && val) result[key] = val      // keduanya harus ada isinya
     })
     return result
   }
@@ -245,19 +244,21 @@ export function ProductForm({ product }: Props) {
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-1">
-          Spesifikasi
-        </label>
+        <label className="block text-sm font-medium mb-1">Spesifikasi</label>
         <textarea
-          rows={4}
+          rows={6}
           value={specsRaw}
           onChange={(e) => setSpecsRaw(e.target.value)}
-          placeholder={'Material: Aluminium 6063\nKaca: Kaca bening 5mm\nFinishing: Powder coating'}
+          placeholder={
+            'Material: Aluminium 6063\nKaca: Kaca bening 5mm\nFinishing: Putih, Hitam, Coklat\nDiameter: 50 cm\nRentang Ukuran: 30–120 cm'
+          }
           className="w-full border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:border-tosca font-mono text-sm"
         />
-        <p className="text-gray-400 text-xs mt-1">
-          Format: satu baris per spek, pisahkan nama dan nilai dengan titik dua (:)
-        </p>
+        <div className="mt-1.5 text-xs text-gray-400 space-y-0.5">
+          <p>Format: <span className="font-mono bg-gray-100 px-1 rounded">Nama Spek: nilainya</span> — satu baris per spek.</p>
+          <p>Kalau ada banyak pilihan, tulis semua di satu baris: <span className="font-mono bg-gray-100 px-1 rounded">Pilihan Warna: Putih, Hitam, Coklat</span></p>
+          <p className="text-red-400">✗ Jangan baris tanpa nilai, contoh salah: <span className="font-mono bg-gray-100 px-1 rounded">Pilihan Warna:</span></p>
+        </div>
       </div>
 
       {/* Foto produk */}
