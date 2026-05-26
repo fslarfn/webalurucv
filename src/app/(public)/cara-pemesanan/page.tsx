@@ -16,8 +16,8 @@ const STEPS = [
   },
   {
     num: 2,
-    title: 'Survei & Quote',
-    desc: 'Tim kami datang ke lokasi untuk mengukur. Setelah survei, kami kirimkan penawaran harga final.',
+    title: 'Ukuran & Quote',
+    desc: 'Diskusikan ukuran dan detail jendela via WhatsApp. Bisa kirim foto lubang jendela untuk referensi. Setelah detail disepakati, kami kirimkan penawaran harga.',
   },
   {
     num: 3,
