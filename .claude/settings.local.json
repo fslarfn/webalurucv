@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-Content \"C:\\\\Users\\\\ASUS\\\\Desktop\\\\websitealurucv\\\\index.html\" -Raw)",
+      "Bash(Select-Object -First 200)",
+      "PowerShell(Get-Item \"C:\\\\Users\\\\ASUS\\\\Desktop\\\\websitealurucv\\\\index.html\" | Select-Object Length, LastWriteTime; [System.IO.File]::ReadAllText\\(\"C:\\\\Users\\\\ASUS\\\\Desktop\\\\websitealurucv\\\\index.html\"\\))",
+      "PowerShell(Get-Item *)",
+      "PowerShell([System.IO.File]::ReadAllText\\(\"C:\\\\Users\\\\ASUS\\\\Desktop\\\\websitealurucv\\\\index.html\"\\) | Out-String)",
+      "PowerShell(Get-ChildItem -Recurse \"C:\\\\Users\\\\ASUS\\\\Desktop\\\\websitealurucv\\\\src\" | Where-Object { -not $_.PSIsContainer } | Select-Object -ExpandProperty FullName | ForEach-Object { $_.Replace\\(\"C:\\\\Users\\\\ASUS\\\\Desktop\\\\websitealurucv\\\\\", \"\"\\) })"
+    ]
+  }
+}

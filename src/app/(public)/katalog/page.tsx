@@ -3,13 +3,17 @@ import { Suspense } from 'react'
 import { createClient } from '@/lib/supabase/server'
 import { ProductGrid } from '@/components/product/ProductGrid'
 import { ProductFilter } from '@/components/product/ProductFilter'
+import { SHAPES } from '@/lib/constants'
 import type { ProductShape } from '@/types'
 
 export const metadata: Metadata = {
   title: 'Katalog Produk',
   description:
-    'Katalog jendela aluminium bulat, lengkung, setengah lingkaran, dan custom. Hanya untuk Jabodetabek.',
+    'Katalog jendela aluminium bulat, lengkung, setengah lingkaran, oval, dan custom. Kirim cepat Jabodetabek.',
 }
+
+// Whitelist nilai filter — harus sama persis dengan nilai di database dan menu nav
+const VALID_SHAPES = new Set<string>(SHAPES.map((s) => s.value))
 
 interface Props {
   searchParams: Promise<{ bentuk?: string }>
@@ -17,6 +21,10 @@ interface Props {
 
 export default async function KatalogPage({ searchParams }: Props) {
   const { bentuk } = await searchParams
+
+  // Abaikan nilai bentuk yang tidak valid agar query tidak error
+  const safeShape = bentuk && VALID_SHAPES.has(bentuk) ? (bentuk as ProductShape) : null
+
   const supabase = await createClient()
 
   let query = supabase
@@ -25,8 +33,8 @@ export default async function KatalogPage({ searchParams }: Props) {
     .eq('is_active', true)
     .order('sort_order', { ascending: true })
 
-  if (bentuk) {
-    query = query.eq('shape', bentuk as ProductShape)
+  if (safeShape) {
+    query = query.eq('shape', safeShape)
   }
 
   const { data: products } = await query

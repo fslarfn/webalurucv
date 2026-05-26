@@ -26,7 +26,8 @@ export function Header() {
             alt="Alucurv"
             width={160}
             height={48}
-            className="h-12 w-auto object-contain"
+            style={{ width: 'auto', height: '48px' }}
+            className="object-contain"
             priority
           />
         </Link>

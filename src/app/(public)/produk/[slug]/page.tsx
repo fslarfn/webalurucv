@@ -15,15 +15,27 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const supabase = await createClient()
   const { data } = await supabase
     .from('products')
-    .select('name, description')
+    .select('name, description, images')
     .eq('slug', slug)
     .eq('is_active', true)
     .single()
 
   if (!data) return {}
+
+  const ogImage = data.images?.[0] ?? '/og-image.jpg'
+  const description =
+    data.description ??
+    `Jendela aluminium ${data.name} dari Alucurv. Kirim cepat ke Jabodetabek.`
+
   return {
     title: data.name,
-    description: data.description ?? undefined,
+    description,
+    openGraph: {
+      title: `${data.name} | Alucurv`,
+      description,
+      images: [{ url: ogImage, width: 1200, height: 630, alt: data.name }],
+      type: 'website',
+    },
   }
 }
 
@@ -83,16 +95,19 @@ export default async function DetailProdukPage({ params }: Props) {
           {specs && Object.keys(specs).length > 0 && (
             <div className="mb-6">
               <h2 className="font-semibold mb-3">Spesifikasi</h2>
-              <table className="w-full text-sm">
-                <tbody>
-                  {Object.entries(specs).map(([k, v]) => (
-                    <tr key={k} className="border-b border-gray-100">
-                      <td className="py-2 text-gray-500 w-1/2">{k}</td>
-                      <td className="py-2 font-medium">{v}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              <div className="rounded-xl border border-gray-100 overflow-hidden text-sm">
+                {Object.entries(specs).map(([k, v], i) => (
+                  <div
+                    key={k}
+                    className={`flex gap-4 px-4 py-2.5 ${
+                      i % 2 === 0 ? 'bg-gray-50' : 'bg-white'
+                    }`}
+                  >
+                    <span className="text-gray-500 w-2/5 shrink-0">{k}</span>
+                    <span className="font-medium">{v}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
 
@@ -108,7 +123,7 @@ export default async function DetailProdukPage({ params }: Props) {
           <div className="bg-tosca-light rounded-xl p-4 text-sm text-gray-600">
             <p className="font-medium text-ink mb-1">Cara pemesanan:</p>
             <p>
-              Konsultasi → Survei & Quote → DP → Produksi → Pelunasan → Kirim
+              Konsultasi → Ukuran & Quote → DP → Produksi → Pelunasan → Kirim
             </p>
             <Link
               href="/cara-pemesanan"

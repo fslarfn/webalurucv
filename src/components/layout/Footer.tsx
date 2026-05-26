@@ -13,7 +13,8 @@ export function Footer() {
               alt="Alucurv"
               width={140}
               height={42}
-              className="h-10 w-auto object-contain brightness-0 invert"
+              style={{ width: 'auto', height: '40px' }}
+              className="object-contain brightness-0 invert"
             />
           </div>
           <p>
