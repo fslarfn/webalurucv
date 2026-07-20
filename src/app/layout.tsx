@@ -1,10 +1,13 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
+import { Analytics } from '@vercel/analytics/next'
+import { SITE_URL } from '@/lib/constants'
 import './globals.css'
 
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID
+
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? 'https://alucurv.com'
-  ),
+  metadataBase: new URL(SITE_URL),
   title: {
     default:
       'Alucurv — Jendela Aluminium Bulat & Lengkung Custom | Kirim Cepat Jabodetabek',
@@ -24,12 +27,9 @@ export const metadata: Metadata = {
   },
   robots: { index: true, follow: true },
   icons: {
-    // TODO: ganti dengan file favicon.png/ico versi ikon saja (tanpa teks logo)
-    // agar tajam di ukuran kecil dan tidak ada kotak putih.
-    // Simpan file di /public/favicon.png lalu update path di sini.
-    icon: '/logo.jpeg',
-    shortcut: '/logo.jpeg',
-    apple: '/logo.jpeg',
+    icon: '/icon.png',
+    shortcut: '/icon.png',
+    apple: '/apple-icon.png',
   },
 }
 
@@ -42,6 +42,23 @@ export default function RootLayout({
     <html lang="id">
       <body className="font-sans text-ink bg-white antialiased">
         {children}
+        <Analytics />
+        {GA_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_ID}');
+              `}
+            </Script>
+          </>
+        )}
       </body>
     </html>
   )

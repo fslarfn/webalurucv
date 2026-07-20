@@ -3,8 +3,8 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/server'
 import { ProductGallery } from '@/components/product/ProductGallery'
-import { SHAPE_LABELS } from '@/lib/constants'
-import { buildQuoteUrl } from '@/lib/whatsapp'
+import { SHAPE_LABELS, SITE_URL } from '@/lib/constants'
+import { buildSimpleUrl } from '@/lib/whatsapp'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -56,14 +56,22 @@ export default async function DetailProdukPage({ params }: Props) {
 
   if (!product) notFound()
 
-  const waUrl = buildQuoteUrl({
-    nama: '',
-    hp: '',
-    area: '',
-    bentuk: SHAPE_LABELS[product.shape as keyof typeof SHAPE_LABELS],
-    jumlah: '1',
-    produk: product.name,
-  })
+  const waUrl = buildSimpleUrl(
+    `Halo Alucurv, saya tertarik dengan produk "${product.name}". Boleh minta info harga dan penawarannya?`
+  )
+
+  const productJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.name,
+    description:
+      product.description ??
+      `Jendela aluminium ${product.name} dari Alucurv. Kirim cepat ke Jabodetabek.`,
+    image: product.images ?? [],
+    url: `${SITE_URL}/produk/${product.slug}`,
+    brand: { '@type': 'Brand', name: 'Alucurv' },
+    category: SHAPE_LABELS[product.shape as keyof typeof SHAPE_LABELS],
+  }
 
   const rawSpecs = product.specifications as Record<string, string> | null
   // Filter entri dengan nilai kosong (terjadi bila input diakhiri ":" tanpa nilai)
@@ -75,6 +83,10 @@ export default async function DetailProdukPage({ params }: Props) {
 
   return (
     <div className="max-w-5xl mx-auto px-5 py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
       <nav className="text-sm text-gray-500 mb-8">
         <Link href="/katalog" className="hover:text-tosca transition">
           Katalog
@@ -134,8 +146,15 @@ export default async function DetailProdukPage({ params }: Props) {
             rel="noopener noreferrer"
             className="block w-full text-center bg-tosca text-white font-semibold py-4 rounded-full hover:bg-tosca-dark transition mb-3"
           >
-            Minta Penawaran via WhatsApp
+            Tanya Produk Ini via WhatsApp
           </a>
+
+          <Link
+            href={`/penawaran?produk=${encodeURIComponent(product.name)}`}
+            className="block w-full text-center border-2 border-tosca text-tosca font-semibold py-3.5 rounded-full hover:bg-tosca-light transition mb-3"
+          >
+            Isi Form Penawaran (ukuran & jumlah)
+          </Link>
 
           <div className="bg-tosca-light rounded-xl p-4 text-sm text-gray-600">
             <p className="font-medium text-ink mb-1">Cara pemesanan:</p>

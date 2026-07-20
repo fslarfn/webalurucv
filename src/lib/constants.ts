@@ -50,4 +50,4 @@ export const OPERATING_HOURS = {
 }
 
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://alucurv.vercel.app'
+  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://alucurv.com'
