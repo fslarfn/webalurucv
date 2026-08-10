@@ -1,48 +1,36 @@
-'use client'
-import { useRouter, useSearchParams } from 'next/navigation'
+import Link from 'next/link'
 import { SHAPES } from '@/lib/constants'
+import { SHAPE_SLUGS } from '@/lib/landing'
 import type { ProductShape } from '@/types'
 
-export function ProductFilter() {
-  const router = useRouter()
-  const searchParams = useSearchParams()
-  const current = searchParams.get('bentuk') as ProductShape | null
-
-  function setFilter(value: ProductShape | null) {
-    const params = new URLSearchParams(searchParams.toString())
-    if (value) {
-      params.set('bentuk', value)
-    } else {
-      params.delete('bentuk')
-    }
-    router.push(`/katalog?${params.toString()}`)
-  }
+// Filter berbentuk link (bukan tombol query-param) agar halaman landing
+// per bentuk ikut ter-crawl Google dari halaman katalog.
+export function ProductFilter({ current }: { current?: ProductShape | null }) {
+  const itemClass = (active: boolean) =>
+    `px-4 py-2 rounded-full text-sm border transition ${
+      active
+        ? 'bg-tosca text-white border-tosca'
+        : 'border-gray-200 hover:border-tosca'
+    }`
 
   return (
     <div className="flex flex-wrap gap-2 mb-8">
-      <button
-        onClick={() => setFilter(null)}
-        className={`px-4 py-2 rounded-full text-sm border transition ${
-          !current
-            ? 'bg-tosca text-white border-tosca'
-            : 'border-gray-200 hover:border-tosca'
-        }`}
-      >
+      <Link href="/katalog" className={itemClass(!current)}>
         Semua
-      </button>
-      {SHAPES.map((s) => (
-        <button
-          key={s.value}
-          onClick={() => setFilter(s.value)}
-          className={`px-4 py-2 rounded-full text-sm border transition ${
-            current === s.value
-              ? 'bg-tosca text-white border-tosca'
-              : 'border-gray-200 hover:border-tosca'
-          }`}
-        >
-          {s.label}
-        </button>
-      ))}
+      </Link>
+      {SHAPES.map((s) => {
+        const slug = SHAPE_SLUGS[s.value]
+        const href = slug ? `/katalog/${slug}` : `/katalog?bentuk=${s.value}`
+        return (
+          <Link
+            key={s.value}
+            href={href}
+            className={itemClass(current === s.value)}
+          >
+            {s.label}
+          </Link>
+        )
+      })}
     </div>
   )
 }

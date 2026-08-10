@@ -1,14 +1,14 @@
 import Link from 'next/link'
 
 const CATEGORIES = [
-  { label: 'Jendela Bulat', href: '/katalog?bentuk=bulat', icon: '○' },
-  { label: 'Jendela Lengkung', href: '/katalog?bentuk=lengkung', icon: '⌒' },
+  { label: 'Jendela Bulat', href: '/katalog/jendela-bulat', icon: '○' },
+  { label: 'Jendela Lengkung', href: '/katalog/jendela-lengkung', icon: '⌒' },
   {
     label: 'Setengah Lingkaran',
-    href: '/katalog?bentuk=setengah_lingkaran',
+    href: '/katalog/jendela-setengah-lingkaran',
     icon: '◡',
   },
-  { label: 'Jendela Oval', href: '/katalog?bentuk=oval', icon: '⬭' },
+  { label: 'Jendela Oval', href: '/katalog/jendela-oval', icon: '⬭' },
   { label: 'Custom Desain', href: '/penawaran', icon: '✦' },
 ]
 

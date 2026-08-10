@@ -5,9 +5,9 @@ import { usePathname } from 'next/navigation'
 
 const NAV_LINKS = [
   { href: '/katalog', label: 'Semua Produk' },
-  { href: '/katalog?bentuk=bulat', label: 'Jendela Bulat' },
-  { href: '/katalog?bentuk=lengkung', label: 'Jendela Lengkung' },
-  { href: '/katalog?bentuk=setengah_lingkaran', label: 'Setengah Lingkaran' },
+  { href: '/katalog/jendela-bulat', label: 'Jendela Bulat' },
+  { href: '/katalog/jendela-lengkung', label: 'Jendela Lengkung' },
+  { href: '/katalog/jendela-setengah-lingkaran', label: 'Setengah Lingkaran' },
   { href: '/pengiriman', label: 'Area Pengiriman' },
   { href: '/cara-pemesanan', label: 'Cara Pesan' },
   { href: '/tentang-kami', label: 'Tentang Kami' },

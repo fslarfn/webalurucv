@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { WA_URL, WORKSHOP_ADDRESS, OPERATING_HOURS } from '@/lib/constants'
+import { AREA_PAGES, SHAPE_PAGES } from '@/lib/landing'
 
 export function Footer() {
   return (
@@ -64,7 +65,30 @@ export function Footer() {
         </div>
       </div>
 
-      <p className="text-center text-gray-500 text-xs mt-10">
+      <div className="max-w-6xl mx-auto px-5 mt-10 pt-8 border-t border-white/10 text-xs text-gray-400">
+        <p className="flex flex-wrap gap-x-3 gap-y-1">
+          {SHAPE_PAGES.map((p) => (
+            <Link
+              key={p.slug}
+              href={`/katalog/${p.slug}`}
+              className="hover:text-tosca transition"
+            >
+              {p.label}
+            </Link>
+          ))}
+          {AREA_PAGES.map((a) => (
+            <Link
+              key={a.slug}
+              href={`/area/${a.slug}`}
+              className="hover:text-tosca transition"
+            >
+              Jendela Aluminium {a.city}
+            </Link>
+          ))}
+        </p>
+      </div>
+
+      <p className="text-center text-gray-500 text-xs mt-8">
         &copy; {new Date().getFullYear()} Alucurv. Semua hak dilindungi.
       </p>
     </footer>

@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { createPublicClient } from '@/lib/supabase/public'
 import { ProductGallery } from '@/components/product/ProductGallery'
 import { SHAPE_LABELS, SITE_URL } from '@/lib/constants'
+import { SHAPE_SLUGS } from '@/lib/landing'
 import { buildSimpleUrl } from '@/lib/whatsapp'
 
 interface Props {
@@ -112,9 +113,18 @@ export default async function DetailProdukPage({ params }: Props) {
         <ProductGallery images={product.images ?? []} productName={product.name} />
 
         <div>
-          <span className="inline-block bg-tosca-light text-tosca text-xs font-medium px-3 py-1 rounded-full mb-3">
-            {SHAPE_LABELS[product.shape as keyof typeof SHAPE_LABELS]}
-          </span>
+          {SHAPE_SLUGS[product.shape as keyof typeof SHAPE_SLUGS] ? (
+            <Link
+              href={`/katalog/${SHAPE_SLUGS[product.shape as keyof typeof SHAPE_SLUGS]}`}
+              className="inline-block bg-tosca-light text-tosca text-xs font-medium px-3 py-1 rounded-full mb-3 hover:bg-tosca hover:text-white transition"
+            >
+              {SHAPE_LABELS[product.shape as keyof typeof SHAPE_LABELS]}
+            </Link>
+          ) : (
+            <span className="inline-block bg-tosca-light text-tosca text-xs font-medium px-3 py-1 rounded-full mb-3">
+              {SHAPE_LABELS[product.shape as keyof typeof SHAPE_LABELS]}
+            </span>
+          )}
           <h1 className="text-3xl font-bold mb-3">{product.name}</h1>
 
           {product.price_label && (

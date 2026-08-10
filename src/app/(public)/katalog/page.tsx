@@ -1,16 +1,16 @@
 import type { Metadata } from 'next'
-import { Suspense } from 'react'
+import { permanentRedirect } from 'next/navigation'
 import { createPublicClient } from '@/lib/supabase/public'
 import { ProductGrid } from '@/components/product/ProductGrid'
 import { ProductFilter } from '@/components/product/ProductFilter'
 import { SHAPES } from '@/lib/constants'
+import { SHAPE_SLUGS } from '@/lib/landing'
 import type { ProductShape } from '@/types'
 
 export const metadata: Metadata = {
   title: 'Katalog Produk',
   description:
     'Katalog jendela aluminium bulat, lengkung, setengah lingkaran, oval, dan custom. Kirim cepat Jabodetabek.',
-  // Halaman filter ?bentuk= mengarah ke kanonikal yang sama agar tidak duplikat
   alternates: { canonical: '/katalog' },
 }
 
@@ -26,6 +26,11 @@ export default async function KatalogPage({ searchParams }: Props) {
 
   // Abaikan nilai bentuk yang tidak valid agar query tidak error
   const safeShape = bentuk && VALID_SHAPES.has(bentuk) ? (bentuk as ProductShape) : null
+
+  // URL lama ?bentuk=bulat dialihkan permanen ke landing page /katalog/jendela-bulat
+  if (safeShape && SHAPE_SLUGS[safeShape]) {
+    permanentRedirect(`/katalog/${SHAPE_SLUGS[safeShape]}`)
+  }
 
   const supabase = createPublicClient()
 
@@ -49,9 +54,7 @@ export default async function KatalogPage({ searchParams }: Props) {
         <strong>Jabodetabek</strong>
       </p>
 
-      <Suspense>
-        <ProductFilter />
-      </Suspense>
+      <ProductFilter current={safeShape} />
 
       <ProductGrid products={products ?? []} />
     </div>
