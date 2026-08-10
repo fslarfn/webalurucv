@@ -5,6 +5,7 @@ import { CategoryRow } from '@/components/home/CategoryRow'
 import { FeaturedProducts } from '@/components/home/FeaturedProducts'
 import { PromoBanner } from '@/components/home/PromoBanner'
 import { DeliverySection } from '@/components/home/DeliverySection'
+import { VideoShowcase } from '@/components/home/VideoShowcase'
 import { Testimonials } from '@/components/home/Testimonials'
 
 export const metadata: Metadata = {
@@ -23,6 +24,7 @@ export default function BerandaPage() {
       <FeaturedProducts />
       <PromoBanner />
       <DeliverySection />
+      <VideoShowcase />
       <Testimonials />
     </>
   )
