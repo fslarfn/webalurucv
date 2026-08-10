@@ -3,8 +3,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { createPublicClient } from '@/lib/supabase/public'
 import { WA_URL } from '@/lib/constants'
-import { TIKTOK_VIDEOS, TIKTOK_PROFILE_URL, tiktokVideoUrl } from '@/lib/videos'
-import { TikTokEmbed } from '@/components/gallery/TikTokEmbed'
+import { TIKTOK_PROFILE_URL, getTikTokVideosWithMeta } from '@/lib/videos'
+import { TikTokLite } from '@/components/gallery/TikTokLite'
 
 export const metadata: Metadata = {
   title: 'Galeri Proyek — Hasil Pemasangan Jendela Aluminium',
@@ -17,6 +17,7 @@ export const metadata: Metadata = {
 export const revalidate = 300
 
 export default async function GaleriPage() {
+  const videos = await getTikTokVideosWithMeta()
   const supabase = createPublicClient()
   const { data: items } = await supabase
     .from('gallery_projects')
@@ -101,8 +102,14 @@ export default async function GaleriPage() {
           .
         </p>
         <div className="flex flex-wrap gap-6 justify-center sm:justify-start">
-          {TIKTOK_VIDEOS.map((v) => (
-            <TikTokEmbed key={v.id} url={tiktokVideoUrl(v.id)} videoId={v.id} />
+          {videos.map((v) => (
+            <TikTokLite
+              key={v.id}
+              videoId={v.id}
+              url={v.url}
+              label={v.label}
+              thumbnail={v.thumbnail}
+            />
           ))}
         </div>
       </section>

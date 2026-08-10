@@ -1,8 +1,10 @@
 import Link from 'next/link'
-import { TIKTOK_VIDEOS, tiktokVideoUrl } from '@/lib/videos'
-import { TikTokEmbed } from '@/components/gallery/TikTokEmbed'
+import { getTikTokVideosWithMeta } from '@/lib/videos'
+import { TikTokLite } from '@/components/gallery/TikTokLite'
 
-export function VideoShowcase() {
+export async function VideoShowcase() {
+  const videos = await getTikTokVideosWithMeta()
+
   return (
     <section className="bg-gray-50 py-16">
       <div className="max-w-6xl mx-auto px-5">
@@ -16,11 +18,18 @@ export function VideoShowcase() {
           </Link>
         </div>
         <p className="text-gray-500 text-sm mb-8">
-          Dokumentasi asli pemasangan di rumah pelanggan Alucurv
+          Dokumentasi asli pemasangan di rumah pelanggan Alucurv — klik untuk
+          memutar
         </p>
         <div className="flex flex-wrap gap-6 justify-center lg:justify-between">
-          {TIKTOK_VIDEOS.map((v) => (
-            <TikTokEmbed key={v.id} url={tiktokVideoUrl(v.id)} videoId={v.id} />
+          {videos.map((v) => (
+            <TikTokLite
+              key={v.id}
+              videoId={v.id}
+              url={v.url}
+              label={v.label}
+              thumbnail={v.thumbnail}
+            />
           ))}
         </div>
       </div>
