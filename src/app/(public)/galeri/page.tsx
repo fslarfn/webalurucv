@@ -3,6 +3,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { createPublicClient } from '@/lib/supabase/public'
 import { WA_URL } from '@/lib/constants'
+import { TIKTOK_VIDEOS, TIKTOK_PROFILE_URL, tiktokVideoUrl } from '@/lib/videos'
+import { TikTokEmbed } from '@/components/gallery/TikTokEmbed'
 
 export const metadata: Metadata = {
   title: 'Galeri Proyek — Hasil Pemasangan Jendela Aluminium',
@@ -82,6 +84,28 @@ export default async function GaleriPage() {
           ))}
         </div>
       )}
+
+      <section className="mt-14">
+        <h2 className="text-2xl font-bold mb-2">Video Dokumentasi Proyek</h2>
+        <p className="text-gray-600 text-sm mb-8 max-w-2xl">
+          Rekaman asli pemasangan dan kunjungan kembali ke rumah pelanggan
+          kami — langsung dari TikTok{' '}
+          <a
+            href={TIKTOK_PROFILE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-tosca font-medium hover:underline"
+          >
+            @alucurvreal_official
+          </a>
+          .
+        </p>
+        <div className="flex flex-wrap gap-6 justify-center sm:justify-start">
+          {TIKTOK_VIDEOS.map((v) => (
+            <TikTokEmbed key={v.id} url={tiktokVideoUrl(v.id)} videoId={v.id} />
+          ))}
+        </div>
+      </section>
 
       <div className="mt-14 bg-tosca-light rounded-2xl p-8 text-center">
         <h2 className="text-xl font-bold mb-2">
