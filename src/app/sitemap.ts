@@ -18,6 +18,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE_URL}/tentang-kami`, changeFrequency: 'monthly', priority: 0.5 },
     { url: `${SITE_URL}/kontak`, changeFrequency: 'monthly', priority: 0.5 },
     { url: `${SITE_URL}/penawaran`, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${SITE_URL}/galeri`, changeFrequency: 'weekly', priority: 0.7 },
     ...SHAPE_PAGES.map((p) => ({
       url: `${SITE_URL}/katalog/${p.slug}`,
       changeFrequency: 'weekly' as const,

@@ -27,6 +27,17 @@ export interface HeroSlide {
   created_at: string
 }
 
+export interface GalleryProject {
+  id: string
+  image_url: string
+  judul: string
+  lokasi: string | null
+  keterangan: string | null
+  urutan: number
+  is_active: boolean
+  created_at: string
+}
+
 export interface QuoteFormData {
   nama: string
   hp: string

@@ -56,6 +56,13 @@ export function Footer() {
             </Link>
             <span>·</span>
             <Link
+              href="/galeri"
+              className="text-xs hover:text-tosca transition"
+            >
+              Galeri Proyek
+            </Link>
+            <span>·</span>
+            <Link
               href="/kontak"
               className="text-xs hover:text-tosca transition"
             >

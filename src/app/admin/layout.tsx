@@ -52,6 +52,12 @@ export default async function AdminLayout({
           >
             Banner Hero
           </a>
+          <a
+            href="/admin/galeri"
+            className="py-3 border-b-2 border-transparent hover:border-tosca hover:text-tosca transition"
+          >
+            Galeri
+          </a>
         </div>
       </nav>
 

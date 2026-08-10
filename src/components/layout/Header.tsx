@@ -8,6 +8,7 @@ const NAV_LINKS = [
   { href: '/katalog/jendela-bulat', label: 'Jendela Bulat' },
   { href: '/katalog/jendela-lengkung', label: 'Jendela Lengkung' },
   { href: '/katalog/jendela-setengah-lingkaran', label: 'Setengah Lingkaran' },
+  { href: '/galeri', label: 'Galeri Proyek' },
   { href: '/pengiriman', label: 'Area Pengiriman' },
   { href: '/cara-pemesanan', label: 'Cara Pesan' },
   { href: '/tentang-kami', label: 'Tentang Kami' },
