@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'Cara Pemesanan',
   description:
     'Cara memesan jendela aluminium custom Alucurv: konsultasi, survei, DP, produksi, hingga pengiriman ke Jabodetabek.',
+  alternates: { canonical: '/cara-pemesanan' },
 }
 
 const STEPS = [

@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'Minta Penawaran',
   description:
     'Isi form untuk minta penawaran harga jendela aluminium Alucurv. Pesan dikirim langsung ke WhatsApp kami.',
+  alternates: { canonical: '/penawaran' },
 }
 
 export default function PenawaranPage() {

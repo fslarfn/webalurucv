@@ -1,9 +1,9 @@
 import Link from 'next/link'
-import { createClient } from '@/lib/supabase/server'
+import { createPublicClient } from '@/lib/supabase/public'
 import { ProductCard } from '@/components/product/ProductCard'
 
 export async function FeaturedProducts() {
-  const supabase = await createClient()
+  const supabase = createPublicClient()
   const { data: products } = await supabase
     .from('products')
     .select('*')

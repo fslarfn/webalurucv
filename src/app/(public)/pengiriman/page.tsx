@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'Area & Estimasi Pengiriman',
   description:
     'Alucurv melayani pengiriman jendela aluminium ke seluruh Jabodetabek dengan armada sendiri. Lihat estimasi waktu pengiriman per area.',
+  alternates: { canonical: '/pengiriman' },
 }
 
 const AREA_DETAIL = [

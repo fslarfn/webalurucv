@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Suspense } from 'react'
-import { createClient } from '@/lib/supabase/server'
+import { createPublicClient } from '@/lib/supabase/public'
 import { ProductGrid } from '@/components/product/ProductGrid'
 import { ProductFilter } from '@/components/product/ProductFilter'
 import { SHAPES } from '@/lib/constants'
@@ -10,6 +10,8 @@ export const metadata: Metadata = {
   title: 'Katalog Produk',
   description:
     'Katalog jendela aluminium bulat, lengkung, setengah lingkaran, oval, dan custom. Kirim cepat Jabodetabek.',
+  // Halaman filter ?bentuk= mengarah ke kanonikal yang sama agar tidak duplikat
+  alternates: { canonical: '/katalog' },
 }
 
 // Whitelist nilai filter — harus sama persis dengan nilai di database dan menu nav
@@ -25,7 +27,7 @@ export default async function KatalogPage({ searchParams }: Props) {
   // Abaikan nilai bentuk yang tidak valid agar query tidak error
   const safeShape = bentuk && VALID_SHAPES.has(bentuk) ? (bentuk as ProductShape) : null
 
-  const supabase = await createClient()
+  const supabase = createPublicClient()
 
   let query = supabase
     .from('products')

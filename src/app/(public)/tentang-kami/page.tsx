@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'Tentang Kami',
   description:
     'Alucurv adalah workshop spesialis jendela aluminium bulat dan lengkung yang melayani Jabodetabek sejak lama.',
+  alternates: { canonical: '/tentang-kami' },
 }
 
 export default function TentangKamiPage() {

@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Kontak',
   description:
     'Hubungi Alucurv via WhatsApp atau kunjungi workshop kami di Bekasi. Melayani Jabodetabek.',
+  alternates: { canonical: '/kontak' },
 }
 
 export default function KontakPage() {

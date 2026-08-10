@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { createClient } from '@/lib/supabase/server'
+import { createPublicClient } from '@/lib/supabase/public'
 import { HeroCarousel } from './HeroCarousel'
 import type { HeroSlide } from '@/types'
 
@@ -7,7 +7,7 @@ type SlidePreview = Pick<HeroSlide, 'id' | 'image_url' | 'judul' | 'link_tujuan'
 
 async function fetchSlides(): Promise<SlidePreview[]> {
   try {
-    const supabase = await createClient()
+    const supabase = createPublicClient()
     const { data, error } = await supabase
       .from('hero_slides')
       .select('id, image_url, judul, link_tujuan')

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { createClient } from '@/lib/supabase/server'
+import { createPublicClient } from '@/lib/supabase/public'
 import { ProductGallery } from '@/components/product/ProductGallery'
 import { SHAPE_LABELS, SITE_URL } from '@/lib/constants'
 import { buildSimpleUrl } from '@/lib/whatsapp'
@@ -10,9 +10,21 @@ interface Props {
   params: Promise<{ slug: string }>
 }
 
+// ISR: cache 5 menit agar TTFB cepat tanpa query Supabase per request
+export const revalidate = 300
+
+export async function generateStaticParams() {
+  const supabase = createPublicClient()
+  const { data } = await supabase
+    .from('products')
+    .select('slug')
+    .eq('is_active', true)
+  return (data ?? []).map(({ slug }) => ({ slug }))
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const supabase = await createClient()
+  const supabase = createPublicClient()
   const { data } = await supabase
     .from('products')
     .select('name, description, images')
@@ -26,13 +38,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // Supabase Storage URL sudah absolut; fallback pakai URL absolut agar
   // tidak bergantung metadataBase saat domain belum di-set di env var.
   const ogImage = data.images?.[0] ?? `${siteUrl}/og-image.jpg`
+  // || (bukan ??) agar deskripsi string kosong di DB tetap dapat fallback
   const description =
-    data.description ??
+    data.description?.trim() ||
     `Jendela aluminium ${data.name} dari Alucurv. Kirim cepat ke Jabodetabek.`
 
   return {
     title: data.name,
     description,
+    alternates: { canonical: `/produk/${slug}` },
     openGraph: {
       title: `${data.name} | Alucurv`,
       description,
@@ -46,7 +60,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function DetailProdukPage({ params }: Props) {
   const { slug } = await params
-  const supabase = await createClient()
+  const supabase = createPublicClient()
   const { data: product } = await supabase
     .from('products')
     .select('*')
@@ -65,7 +79,7 @@ export default async function DetailProdukPage({ params }: Props) {
     '@type': 'Product',
     name: product.name,
     description:
-      product.description ??
+      product.description?.trim() ||
       `Jendela aluminium ${product.name} dari Alucurv. Kirim cepat ke Jabodetabek.`,
     image: product.images ?? [],
     url: `${SITE_URL}/produk/${product.slug}`,

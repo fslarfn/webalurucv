@@ -43,6 +43,11 @@ const localBusinessJsonLd = {
     'Tangerang',
     'Bekasi',
   ].map((name) => ({ '@type': 'City', name })),
+  sameAs: [
+    'https://www.instagram.com/alucurv.official/',
+    'https://www.tiktok.com/@alucurv_official',
+    'https://www.facebook.com/488078657732365',
+  ],
 }
 
 export default function PublicLayout({
